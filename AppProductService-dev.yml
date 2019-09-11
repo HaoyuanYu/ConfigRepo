@@ -1,4 +1,9 @@
+server:
+  port:
+    8071
 spring:
+  application:
+    name: AppProductService
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: master
