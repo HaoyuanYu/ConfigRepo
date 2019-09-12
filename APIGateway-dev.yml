@@ -1,0 +1,10 @@
+server:
+  port: 8060
+management:
+  security:
+    enabled: false
+zuul:
+  routes:
+    AppProductService: /myProduct/**
+  ignored-patterns:
+    - /**/msg
