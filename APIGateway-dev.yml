@@ -24,9 +24,15 @@ zuul:
         # 周期时间
         refresh-interval: 60
         # 限流方式 USER 根据用户；ORIGIN 原始请求；URL 请求地址；
-        type: ORIGIN
+        type: 
+          - user
+          - origin
+          - url
       APPORDERSERVICE:
         limit: 3
         quota: 30
         refresh-interval: 60
-        type: ORIGIN
+        type:
+          - user
+          - origin
+          - url
