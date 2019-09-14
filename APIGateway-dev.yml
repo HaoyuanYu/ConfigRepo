@@ -12,9 +12,9 @@ zuul:
     # 开启限流
     enabled: true
     # 存储方式
-    repository: REDIS
+    repository: redis
     # 限流策略
-    policies:
+    policy-list:
       # 指定限流服务
       APPPRODUCTSERVICE:
         # 每个周期内请求次数
