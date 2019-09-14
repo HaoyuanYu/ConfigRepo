@@ -9,30 +9,23 @@ zuul:
   ignored-patterns:
     - /**/msg
   ratelimit:
-    # 开启限流
+    key-prefix: your-prefix
     enabled: true
-    # 存储方式
-    repository: redis
-    # 限流策略
+    repository: REDIS
+    behind-proxy: true
+    add-response-headers: true
+    default-policy-list: #optional - will apply unless specific policy exists
+      - limit: 10 #optional - request number limit per refresh interval window
+        quota: 1000 #optional - request time limit per refresh interval window (in seconds)
+        refresh-interval: 60 #default value (in seconds)
+        type: #optional
+          - user
+          - origin
+          - url
+          - httpmethod
     policy-list:
-      # 指定限流服务
       APPPRODUCTSERVICE:
-        # 每个周期内请求次数
-        limit: 3
-        # 单位时间内允许访问的总时间
-        quota: 30
-        # 周期时间
-        refresh-interval: 60
-        # 限流方式 USER 根据用户；ORIGIN 原始请求；URL 请求地址；
-        type: 
-          - user
-          - origin
-          - url
-      APPORDERSERVICE:
-        limit: 3
-        quota: 30
-        refresh-interval: 60
-        type:
-          - user
-          - origin
-          - url
+        - limit: 10 #optional - request number limit per refresh interval window
+          quota: 1000 #optional - request time limit per refresh interval window (in seconds)
+          refresh-interval: 60 #default value (in seconds)
+          
