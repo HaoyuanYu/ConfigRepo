@@ -4,6 +4,8 @@ management:
   security:
     enabled: false
 zuul:
+  # 让所有服务忽略敏感头（可以加cookie）
+  sensitive-headers:
   routes:
     AppProductService: /myProduct/**
   ignored-patterns:
