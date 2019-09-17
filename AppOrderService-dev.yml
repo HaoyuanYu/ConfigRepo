@@ -23,3 +23,17 @@ feign:
     enabled: true
 env:
   dev
+hystrix:
+  command:
+    # 设置默认的配置
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5500
+    # 为某个特定的方法设置配置，将覆盖默认值
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
